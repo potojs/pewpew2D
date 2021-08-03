@@ -1,0 +1,174 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300&display=swap');
+
+* {
+    font-family: 'Quicksand', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    color: var(--font-color);
+    
+}
+:root {
+    --dark-blue-0: rgb(2, 0, 26);
+    --dark-blue-1: rgb(3, 0, 44);
+    --font-color: rgb(209, 209, 209);
+    --noice-red: rgb(224, 34, 0);
+    --noice-green: rgb(0, 155, 34);
+}
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 100px 40px;
+    background-color: var(--dark-blue-1);
+}
+.app-header {
+    margin: 30px;
+    text-align: center;
+}
+.game-title {
+    font-size: 3rem;
+}
+.play-options {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.white-dark-blue-btn {
+    margin: 0.5em;
+    padding: 0.5em;
+    font-size: 1.2rem;
+    cursor: pointer;
+    border: solid 1px var(--font-color);
+    color: var(--font-color);
+    background-color: var(--dark-blue-1);
+}
+.white-dark-blue-btn:hover {
+    color: var(--dark-blue-1);
+    background-color: var(--font-color);
+}
+.play-options button {
+    width: 200px;
+}
+.not-active {
+    display: none !important;
+} 
+.blur {
+    position: absolute;
+    z-index: 10;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background-color: rgba(0, 0, 0, 0.733);
+}
+.close-popup {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    font-size: 3rem;
+    width: 40px;
+    height: 40px;
+}
+.popup {
+    z-index: 1000;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: var(--dark-blue-0);
+    border: solid 1px white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 30px;
+    width: clamp(280px, 100%, 400px);
+}
+.game-type {
+    font-size: 3rem;
+    text-align: center;
+}
+.game-howtoplay {
+    margin: 30px 0;
+    font-size: 0.9rem;
+
+}
+.game-options {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+.game-options button {
+    width: 50%;
+}
+.play-cancel-ops {
+    margin: 20px;
+    width: 100%;
+    display: flex;
+}
+.play-cancel-ops button {
+    margin: auto;
+    background-color: transparent;
+    padding: 0.5em;
+    font-size: 1.2rem;
+    cursor: pointer;
+    width: 40%;
+}
+.start-game {
+    color: var(--noice-green);
+    border: solid 1px var(--noice-green);
+}
+.cancel-game {
+    color: var(--noice-red);
+    border: solid 1px var(--noice-red);
+}
+.play-cancel-ops button:hover {
+    color: var(--font-color);
+}
+.start-game:hover {
+    background-color: var(--noice-green) !important;
+}
+.cancel-game:hover {
+    background-color: var(--noice-red) !important;
+}
+.start-game.disabled {
+    filter: opacity(40%);
+    pointer-events: none;
+}
+.loading-icon-parent:not(.not-active) + div {
+    filter: opacity(20%);
+    pointer-events: none;
+}
+.loading-icon-parent {
+    z-index: 99999;
+    position: absolute;
+    top: 50%;
+    left: 50%; 
+    transform: translate(-50%, -50%);
+}
+.loading-icon {
+    font-size: 5rem;
+    margin: auto;
+    animation: loadingRotation 1s linear infinite;
+}
+@keyframes loadingRotation {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+
+.footer {
+    position: absolute;
+    bottom: 5px;
+    font-size: 0.8rem;
+
+}

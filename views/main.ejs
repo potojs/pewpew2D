@@ -1,0 +1,65 @@
+<html lang="en">
+  <head>
+    <script src="https://kit.fontawesome.com/a0dcbd7f59.js" crossorigin="anonymous"></script>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PewPew2D</title>
+  </head>
+  <body>
+    <div class="app-header">
+      <h1 class="game-title">PewPew2D</h1>
+      <p class="game-title-disc">
+        <i>"the best game to ever exist"</i> <span>-developer</span>
+      </p>
+    </div>
+    <div class="play-options">
+      <button class="play-w-randoms-btn white-dark-blue-btn">play w/ randoms</button>
+      <button class="lobby-btn white-dark-blue-btn">join/create a lobby</button>
+    </div>
+    <div class="footer">@copyright or something idk: poto, 2021?</div>
+
+    <div class="blur not-active"></div>
+    <div class="play-w-randoms popup not-active">
+      <button class="close-popup">x</button>
+      <div class="loading-icon-parent not-active">
+        <div class="loading-icon">
+          <i class="fas fa-circle-notch"></i>
+        </div>
+      </div>
+      
+      <div>
+        <div class="game-disc">
+          <div class="game-type">1 VS 1</div>
+          <div class="game-howtoplay">
+            <div class="htp-1v1">
+              you play against another player and try to win, there is two rounds if you win both; you win the game and vice versa
+              but if there is a tie, you will play a third and final round. there is two win conditions:
+              <ul>
+                <li>either you kill your opponent</li>
+                <li>or you capture the flag</li>
+              </ul> 
+            </div>
+            <div class="htp-2v2 not-active">
+              you play with another player as a team against another team and try to win, there is two rounds if your team wins both; your team wins the game and vice versa
+              but if there is a tie, you will play a third and final round. there is two win conditions:
+              <ul>
+                <li>either both your opponents are killed</li>
+                <li>or you/your teammate capture the flag</li>
+              </ul> 
+            </div>
+          </div>
+        </div>
+        <div class="game-options">
+          <button class="btn-1v1 white-dark-blue-btn">1 vs 1</button>
+          <button class="btn-2v2 white-dark-blue-btn">2 vs 2</button>
+        </div>
+      </div>
+      <div class="play-cancel-ops">
+        <button class="start-game">play!</button>
+        <button class="cancel-game">cancel</button>
+      </div>
+    </div>
+    <script src="/main.js"></script>
+  </body>
+</html>
