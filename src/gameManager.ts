@@ -1,27 +1,40 @@
-import Game from "./game";
+import { Game, CustomGame } from "./game";
 import { Socket } from "socket.io";
 import { Mode, genAuthKey, authenticate } from "./utils";
 
 class GameManager {
     public games: Game[];
+    public customGames: CustomGame[];
+
     private usersWaitingPublic: {
         oneVone: Socket[],
         twoVtwo: Socket[]
     }
+    public deltaTime: number;
+    private time1: number;
+    private time2: number;
     constructor(){
+        this.time1 = 0;
+        this.time2 = 0;
+        this.deltaTime = 0;
         this.games = [];
+        this.customGames = [];
         this.usersWaitingPublic = {
             oneVone: [],
             twoVtwo: []
         }
     }
     public update(){
-        console.log(this.games.length);
+        this.time1 = new Date().getTime();
+        this.deltaTime = this.time1 - this.time2;
         for(let i=this.games.length-1;i>=0;i--) {
             if(this.games[i].ended) {
                 this.games.splice(i, 1);
+            }else {
+                this.games[i].update(this.deltaTime/33);
             }
         }
+        this.time2 = new Date().getTime();
     }
     public connect(socket: Socket, msg: any, path: string, callback: Function) {
         const { gameId, authKey, mode } = msg;
@@ -56,13 +69,44 @@ class GameManager {
         })
         this.games.forEach(game=>{
             const player = game.hasPlayer(socket);
-            console.log("hi1")
             if(player){
-                console.log("hi")
                 game.disconnect(player);
             }
         })
+        for(let i=0;i<this.customGames.length;i++){
+            if(this.customGames[i].admin === socket) {
+                this.customGames.splice(i, 1);
+            } else {
+                this.customGames[i].disconnect(socket);
+            }
+        }
 
+    }
+    public createCustomGame(socket: Socket, mode: Mode): boolean {
+        if(!this.isNewPlayer(socket)){
+            return false;
+        }
+        this.customGames.push(new CustomGame(socket, mode));
+        socket.on("delete-custom-game", ()=>{
+            for(let i=this.customGames.length-1;i>=0;i--) {
+                if(this.customGames[i].admin === socket) {
+                    this.customGames.splice(i, 1);
+                }
+            }
+        })
+        return true;
+    }
+    public joinningCustomGame(socket: Socket, gameCode: string) {
+        if(!this.isNewPlayer(socket)){
+            return false;
+        }
+        for(let i=0;i<this.customGames.length;i++){
+            if(this.customGames[i].code === gameCode) {
+                this.customGames[i].connectPlayer(socket, this.games);
+                return;
+            }
+        }
+        socket.emit("wrong-game-code", gameCode);
     }
     public joinningPublicGame(socket: Socket, mode: Mode): boolean {
         if(!this.isNewPlayer(socket)){
@@ -101,7 +145,8 @@ class GameManager {
         return (
             !!!this.usersWaitingPublic.oneVone.find(s=>s===socket) &&
             !!!this.usersWaitingPublic.twoVtwo.find(s=>s===socket) &&
-            !!!this.games.find(game=>game.hasPlayer(socket))
+            !!!this.games.find(game=>game.hasPlayer(socket)) &&
+            !!!this.customGames.find(game=>game.hasPlayer(socket))
         )
     }
 }

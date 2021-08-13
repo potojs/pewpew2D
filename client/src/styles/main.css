@@ -1,19 +1,9 @@
-@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300&display=swap');
-
 * {
-    font-family: 'Quicksand', sans-serif;
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     color: var(--font-color);
     
-}
-:root {
-    --dark-blue-0: rgb(2, 0, 26);
-    --dark-blue-1: rgb(3, 0, 44);
-    --font-color: rgb(209, 209, 209);
-    --noice-red: rgb(224, 34, 0);
-    --noice-green: rgb(0, 155, 34);
 }
 body {
     display: flex;
@@ -51,18 +41,6 @@ body {
 .play-options button {
     width: 200px;
 }
-.not-active {
-    display: none !important;
-} 
-.blur {
-    position: absolute;
-    z-index: 10;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
-    background-color: rgba(0, 0, 0, 0.733);
-}
 .close-popup {
     position: absolute;
     top: 0;
@@ -73,20 +51,6 @@ body {
     font-size: 3rem;
     width: 40px;
     height: 40px;
-}
-.popup {
-    z-index: 1000;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background-color: var(--dark-blue-0);
-    border: solid 1px white;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 30px;
-    width: clamp(280px, 100%, 400px);
 }
 .game-type {
     font-size: 3rem;
@@ -119,24 +83,24 @@ body {
     cursor: pointer;
     width: 40%;
 }
-.start-game {
+.confirm {
     color: var(--noice-green);
     border: solid 1px var(--noice-green);
 }
-.cancel-game {
+.cancel {
     color: var(--noice-red);
     border: solid 1px var(--noice-red);
 }
 .play-cancel-ops button:hover {
     color: var(--font-color);
 }
-.start-game:hover {
+.confirm:hover {
     background-color: var(--noice-green) !important;
 }
-.cancel-game:hover {
+.cancel:hover {
     background-color: var(--noice-red) !important;
 }
-.start-game.disabled {
+.confirm.disabled {
     filter: opacity(40%);
     pointer-events: none;
 }
@@ -170,5 +134,76 @@ body {
     position: absolute;
     bottom: 5px;
     font-size: 0.8rem;
+}
 
+
+.create-custom-game-section,
+.custom-game-created-section,
+.join-custom-game-section {
+    text-align: center;
+}
+.custom-game-mode-input {
+    display: flex;
+    margin: 30px 20px;
+}
+.custom-game-mode-input * {
+    margin: auto;
+}
+.custom-game-mode-input button {
+    color: var(--font-color);
+    background-color: transparent;
+    border: solid 1px var(--font-color);
+    padding: 3px;
+}
+.custom-game-mode-input button.disabled {
+    opacity: 50%;
+    cursor: pointer;
+}
+.custom-game-mode-input button.disabled:hover {
+    opacity: 1;
+    color: var(--dark-blue-1);
+    background-color: var(--font-color);
+}
+.custom-game .confirm,
+.custom-game .cancel {
+    background-color: transparent;
+    padding: 0.3em;
+    font-size: 1.2rem;
+    margin: 5px 20px;
+    cursor: pointer;
+    width: 100px;
+}
+.custom-game .confirm:hover,
+.custom-game .cancel:hover {
+    color: var(--font-color);
+}
+.custom-game .loading-icon {
+    font-size: 3rem;
+}
+.custom-game-code {
+    font-size: 1.2rem;
+    margin: 20px 0;
+}
+.custom-game-code-span {
+    font-weight: bold;
+}
+.custom-game-code-advice {
+    font-size: 0.9rem;
+}
+.custom-game-code-advice span {
+    font-size: 0.7rem;
+}
+.join-custom-game-code-input input {
+    margin: 20px 0;
+    padding: 6px;
+    width: 80%;
+    font-size: 1.1rem;
+    border: solid 1px var(--saturated-blue);
+    border-radius: 8px;
+    background-color: var(--saturated-blue);
+    color: var(--font-color);
+}
+.join-custom-game-code-input input:focus {
+    outline: none;
+    border: solid 1px var(--font-color);
 }

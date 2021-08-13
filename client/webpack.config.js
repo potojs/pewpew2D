@@ -4,7 +4,7 @@ const { ESBuildMinifyPlugin } = require("esbuild-loader");
 module.exports = {
   mode: "production",
   resolve: {
-    extensions: ['.ts', '.js', '.json']
+    extensions: [".ts", ".js", ".json"],
   },
   entry: {
     main: "./src/main/main.ts",
@@ -34,6 +34,6 @@ module.exports = {
   },
   output: {
     filename: "[name].js",
-    path: path.resolve(__dirname, "public")
+    path: path.resolve(__dirname, "public"),
   },
 };

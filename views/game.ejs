@@ -7,6 +7,28 @@
     <title>PewPew2D</title>
 </head>
 <body>
-    <script src="/game.js"></script>
+    <div class="blur not-active"></div>
+    <div class="game-ending-screen not-active">
+        <div class="game-result"></div>
+        <div class="game-winner"></div>
+        <button class="exit-game">exit</button>
+    </div>
+    <button class="show-weapon-stats">show weapon stats</button>
+    <div class="round-result not-active">
+        <div class="state"></div>
+        <div class="winner"></div>
+        <div>current score:</div>
+        <div class="blue-score">blue: 1</div>
+        <div class="red-score">red: 0</div>
+    </div>
+    <div class="popup weapon-stats-popup not-active">
+        <div class="weapon-name"></div>
+        <ul class="weapon-stats"></ul>
+        <button class="close">close</button>
+    </div>
+    <div class="round-startsin-indicator">
+        round <span class="round-number">1</span> starts in: <span class="timeleft"></span>
+    </div>
+    <script src="/game.js" defer></script>
 </body>
 </html>

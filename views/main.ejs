@@ -15,11 +15,64 @@
     </div>
     <div class="play-options">
       <button class="play-w-randoms-btn white-dark-blue-btn">play w/ randoms</button>
-      <button class="lobby-btn white-dark-blue-btn">join/create a lobby</button>
+      <button class="custom-game-btn white-dark-blue-btn">join/create a custom game</button>
     </div>
     <div class="footer">@copyright or something idk: poto, 2021?</div>
 
-    <div class="blur not-active"></div>
+    <div class="custom-game popup not-active">
+      <button class="close-popup">x</button>
+
+      <!-- custom game created section -->
+      <div class="custom-game-created-section not-active">
+        <div class="custom-game-created-title title">custom game created!</div>
+        <div class="custom-game-code">
+          <p>your game's code:</p> <span class="custom-game-code-span"></span>
+        </div>
+        <button class="delete-custom-game-btn cancel">delete</button>
+        <p class="custom-game-code-advice">share the code with your friends! <span>if you have any :D</span></p>
+      </div>
+      <!--  -->
+
+      <!-- create custom game section -->
+      <div class="create-custom-game-section">
+        <div class="loading-icon-parent not-active">
+          <div class="loading-icon">
+            <i class="fas fa-circle-notch"></i>
+          </div>
+        </div>
+        <div>
+          <div class="create-custom-game-title title">create a custom game</div>
+          <div class="custom-game-mode-input">
+            <p>choose a game mode:</p> <button class="option-1v1">1 VS 1</button>
+            <button class="option-2v2 disabled">2 VS 2</button>
+          </div>
+        </div>
+        <button class="create-custom-game-btn confirm">create!</button>
+        <button class="create-custom-game-cancel-btn cancel">cancel</button>
+      </div>
+      <!--  -->
+
+      <div class="line"></div>
+
+      <!-- join a custom game section -->
+      <div class="join-custom-game-section">
+        <div class="loading-icon-parent not-active">
+          <div class="loading-icon">
+            <i class="fas fa-circle-notch"></i>
+          </div>
+        </div>
+        <div>
+          <div class="join-custom-game-title title">join a custom game</div>
+          <div class="join-custom-game-code-input">
+            <input type="text" placeholder="custom game's code">
+          </div>
+        </div>
+        <button class="join-custom-game-btn confirm">join</button>
+        <button class="join-custom-game-cancel-btn cancel">cancel</button>
+      </div>
+      <!--  -->
+    </div>
+
     <div class="play-w-randoms popup not-active">
       <button class="close-popup">x</button>
       <div class="loading-icon-parent not-active">
@@ -34,18 +87,16 @@
           <div class="game-howtoplay">
             <div class="htp-1v1">
               you play against another player and try to win, there is two rounds if you win both; you win the game and vice versa
-              but if there is a tie, you will play a third and final round. there is two win conditions:
+              but if there is a tie, you will play a third and final round. there is only one win condition:
               <ul>
-                <li>either you kill your opponent</li>
-                <li>or you capture the flag</li>
+                <li>DESTROY your opponent!!!</li>
               </ul> 
             </div>
             <div class="htp-2v2 not-active">
               you play with another player as a team against another team and try to win, there is two rounds if your team wins both; your team wins the game and vice versa
-              but if there is a tie, you will play a third and final round. there is two win conditions:
+              but if there is a tie, you will play a third and final round. there is only one win conditions:
               <ul>
-                <li>either both your opponents are killed</li>
-                <li>or you/your teammate capture the flag</li>
+                <li>kill both your opponents </li>
               </ul> 
             </div>
           </div>
@@ -56,10 +107,11 @@
         </div>
       </div>
       <div class="play-cancel-ops">
-        <button class="start-game">play!</button>
-        <button class="cancel-game">cancel</button>
+        <button class="confirm">play!</button>
+        <button class="cancel">cancel</button>
       </div>
     </div>
+    <div class="blur not-active"></div>
     <script src="/main.js"></script>
   </body>
 </html>

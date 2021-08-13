@@ -5,3 +5,126 @@ html, body {
 canvas {
     display: block;
 }
+button {
+    margin: auto;
+    background-color: transparent;
+    padding: 0.5em;
+    font-size: 1.2rem;
+    cursor: pointer;
+    width: 40%;
+}
+.blur {
+    animation: fadein 0.2s ease-out forwards;
+}
+.round-result {
+    position: absolute;
+    color: var(--font-color);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    animation: scaleDown 0.2s ease-out forwards;
+    font-size: 15px;
+    z-index: 999;
+}
+.state {
+    font-size: 5em;
+}
+.round-result {
+    font-size: 1.5em;
+}
+@keyframes scaleDown {
+    from {
+        font-size: 40px;
+    }
+    to {
+        font-size: 20px;
+    }
+}
+@keyframes fadein {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+.round-startsin-indicator {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 2rem;
+    z-index: 1000000;
+    color: var(--font-color);
+}
+.weapon-stats-popup.not-active ~ .round-startsin-indicator .timeleft {
+    position: absolute;
+    top: 50vh;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 5rem;
+}
+.show-weapon-stats {
+    color: var(--font-color);
+    background-color: rgba(2, 2, 2, 0.794);
+    border: solid 1px var(--font-color);
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 500;
+}
+.show-weapon-stats:hover {
+    background-color: var(--font-color);
+    color: var(--dark-blue-1);
+} 
+.weapon-name {
+    font-size: 3rem;
+}
+.weapon-stats {
+    font-size: 1.2rem;
+    list-style-type: none;
+    text-align: left;
+}
+.weapon-stat {
+    padding: 4px;
+}
+.weapon-stats-popup {
+    color: var(--font-color);
+    text-align: center;
+}
+.close {
+    color: var(--noice-red);
+    border: solid 1px var(--noice-red);
+}
+.close:hover {
+    color: var(--font-color);
+    background-color: var(--noice-red) !important;
+}
+.game-ending-screen {
+    position: absolute;
+    color: var(--font-color);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    font-size: 15px;
+    z-index: 999;
+}
+.game-result {
+    font-size: 3.5rem;
+    margin: 20px;
+}
+.game-winner {
+    font-size: 1.5rem;
+}
+.exit-game {
+    color: var(--font-color);
+    border: solid 1px var(--font-color);
+    margin: 20px; 
+}
+.exit-game:hover {
+    color: var(--dark-blue-1);
+    background-color: var(--font-color);
+}
